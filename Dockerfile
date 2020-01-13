@@ -1,10 +1,10 @@
 FROM golang:1.12.0-alpine3.9
-
-WORKDIR /go/src/app
 ENV GO111MODULE=on
 
-RUN apk add --no-cache alpine-sdk git && go get github.com/pilu/fresh
+ADD . /go/src/app
 
-EXPOSE 8080
+WORKDIR /go/src/app
+RUN apk add --no-cache git make && \
+  go mod download
 
-CMD fresh
+CMD /bin/bash

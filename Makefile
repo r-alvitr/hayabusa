@@ -1,10 +1,10 @@
 NAME:=hayabusa
 
-up:
-	@docker-compose up
+build:
+	@sudo docker build . -t ${NAME}
 
-down:
-	@docker-compose down
+run:
+	@sudo docker run -it --name ${NAME} -p '8080:8080' ${NAME} go run server.go
 
 ckill:
 	@sudo docker container prune
