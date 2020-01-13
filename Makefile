@@ -24,5 +24,7 @@ img:
 gmd:
 	@go mod download
 
-curl:
-	@curl -kL 'localhost:8080' -o /dev/null -w "%{time_total}" 2> /dev/null && echo ''
+# 100.curl : 100回実行される
+# 1000.curl : 1000回実行される
+%.curl:
+	@script/curl_test.sh $*
