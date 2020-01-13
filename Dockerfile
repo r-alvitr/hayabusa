@@ -1,10 +1,13 @@
 FROM golang:1.12.0-alpine3.9
 ENV GO111MODULE=on
+ENV HOME=/go/src/app/
+WORKDIR ${HOME}
 
-ADD . /go/src/app
+ADD ./server.go ${HOME}
+ADD ./go.mod ${HOME}
+ADD ./go.sum ${HOME}
 
-WORKDIR /go/src/app
-RUN apk add --no-cache git make && \
+RUN apk add --no-cache git && \
   go mod download
 
 CMD /bin/bash
