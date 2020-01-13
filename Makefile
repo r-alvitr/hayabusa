@@ -23,3 +23,6 @@ img:
 
 gmd:
 	@go mod download
+
+curl:
+	@curl -kL 'localhost:8080' -o /dev/null -w "%{time_total}" 2> /dev/null && echo ''
