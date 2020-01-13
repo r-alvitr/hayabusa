@@ -1,4 +1,4 @@
-NAME:=sekirei
+NAME:=hayabusa
 
 build:
 	sudo docker build . -t ${NAME}
